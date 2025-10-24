@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph Creator - Entity Extraction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Graph Creator</h1>
+            <p>Drop text files to extract entities and build your knowledge graph</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Graph Visualization Area -->
+            <div class="graph-container">
+                <div id="graph-canvas"></div>
+                <div class="graph-info">
+                    <span id="node-count">Nodes: 0</span>
+                    <span id="edge-count">Edges: 0</span>
+                </div>
+            </div>
+
+            <!-- Sidebar with Controls -->
+            <div class="sidebar">
+                <div class="controls">
+                    <button id="reset-btn" class="btn btn-danger">Reset Graph</button>
+                </div>
+
+                <!-- Drag and Drop Zone -->
+                <div id="drop-zone" class="drop-zone">
+                    <div class="drop-zone-content">
+                        <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                        </svg>
+                        <p class="drop-text">Drag & drop text files here</p>
+                        <p class="drop-subtext">or click to browse</p>
+                        <input type="file" id="file-input" accept=".txt,.md" hidden>
+                    </div>
+                </div>
+
+                <!-- Status Messages -->
+                <div id="status-message" class="status-message"></div>
+
+                <!-- Processing Log -->
+                <div class="log-container">
+                    <h3>Processing Log</h3>
+                    <div id="log" class="log"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
